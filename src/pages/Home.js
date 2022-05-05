@@ -32,16 +32,23 @@ const Home = () => {
           src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
           alt=""
         />
-        <input type="text" />
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" />
+        </div>
         <nav>
-          <button>
-            <Link to="/">s'inscrire</Link>
+          <button className="header-button1">
+            <Link className="header-link1">s'inscrire</Link>
           </button>
-          <button>
-            <Link to="/">se connecter</Link>
+          <button className="header-button1">
+            <Link className="header-link1" to="/">
+              se connecter
+            </Link>
           </button>
-          <button>
-            <Link to="/">vends tes articles</Link>
+          <button className="header-button2">
+            <Link className="header-link3" to="/">
+              vends tes articles
+            </Link>
           </button>
         </nav>
       </header>
@@ -55,33 +62,37 @@ const Home = () => {
           />
         </section>
 
+        <h1>Articles Populaire</h1>
+
         <section className="offers">
           {data.offers.map((offer, index) => {
             // console.log(offer.product_pictures);
             const id = offer._id;
-            console.log(id);
+            // console.log(id);
             return (
               <>
-                <div key={index}>
-                  {offer.product_pictures.map((picture, num) => {
-                    return (
-                      <div key={num}>
-                        <Link to={`/offer/${id}`}>
-                          <img src={picture.secure_url} alt="" />
-                        </Link>
-                      </div>
-                    );
-                  })}
-                </div>
-
                 <div>
-                  <p>{offer.product_price}€</p>
-                </div>
+                  <div key={index}>
+                    {offer.product_pictures.map((picture, num) => {
+                      return (
+                        <div key={num}>
+                          <Link to={`/offer/${id}`}>
+                            <img src={picture.secure_url} alt="" />
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
 
-                <div>
-                  {offer.product_details.map((brand) => {
-                    return <p>{brand.MARQUE}</p>;
-                  })}
+                  <div>
+                    <p>{offer.product_price}€</p>
+                  </div>
+
+                  <div>
+                    {offer.product_details.map((brand) => {
+                      return <p>{brand.MARQUE}</p>;
+                    })}
+                  </div>
                 </div>
               </>
             );

@@ -13,9 +13,9 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offers/:${id}`
+          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -28,24 +28,60 @@ const Offer = () => {
   return isLoading === true ? (
     <div>En cours de chargement...</div>
   ) : (
-    <div>
-      {data.offers.map((offer, index) => {
-        return (
-          <div>
-            {offer.product_detail.map((product, num) => {
-              return (
-                <div>
-                  <h1>{product.MARQUE}</h1>
-                  <h1>{product.ÉTAT}</h1>
-                  <h1>{product.COULEUR}</h1>
-                  <h1>{product.EMPLACEMENT}</h1>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <header>
+        <img
+          src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
+          alt=""
+        />
+        <div>
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" />
+        </div>
+        <nav>
+          <button className="header-button1">
+            <Link className="header-link1" to="/">
+              s'inscrire
+            </Link>
+          </button>
+          <button className="header-button1">
+            <Link className="header-link1" to="/">
+              se connecter
+            </Link>
+          </button>
+          <button className="header-button2">
+            <Link className="header-link3" to="/">
+              vends tes articles
+            </Link>
+          </button>
+        </nav>
+      </header>
+      <main>
+        <div>
+          {data.product_pictures.map((picture, index) => {
+            console.log(picture);
+            return (
+              <div>
+                <img src={picture.secure_url} alt="" />
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          {data.product_details.map((infos, index) => {
+            console.log(infos);
+            return (
+              <div>
+                <p>MARQUE:{infos.MARQUE}</p>
+                <p>ÉTAT:{infos.ÉTAT}</p>
+                <p>COULEUR:{infos.COULEUR}</p>
+                <p>EMPLACEMENT:{infos.EMPLACEMENT}</p>
+              </div>
+            );
+          })}
+        </div>
+      </main>
+    </>
   );
 };
 
