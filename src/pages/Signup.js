@@ -31,7 +31,24 @@ const Signup = () => {
 
   return (
     <div className="container-form">
-      <form>
+      <form
+        onSubmit={async (handleSubmit) => {
+          try {
+            const response = await axios.post(
+              "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+              {
+                username: name,
+                email: email,
+                password: password,
+                newletter: newsletter,
+              }
+            );
+            console.log(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+        }}
+      >
         <input
           type="text"
           placeholder="Nom d'utilisateur"
@@ -74,26 +91,7 @@ const Signup = () => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moin 18ans
         </p>
-        <input
-          type="submit"
-          value="Register"
-          onClick={async () => {
-            try {
-              const response = await axios.post(
-                "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-                {
-                  username: name,
-                  email: email,
-                  password: password,
-                  newletter: newsletter,
-                }
-              );
-              console.log(response.data);
-            } catch (error) {
-              console.log(error);
-            }
-          }}
-        />
+        <input type="submit" value="Register" />
       </form>
     </div>
   );
