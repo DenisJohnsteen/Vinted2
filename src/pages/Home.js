@@ -38,7 +38,9 @@ const Home = () => {
         </div>
         <nav>
           <button className="header-button1">
-            <Link className="header-link1">s'inscrire</Link>
+            <Link className="header-link1" to="/signup">
+              s'inscrire
+            </Link>
           </button>
           <button className="header-button1">
             <Link className="header-link1" to="/">

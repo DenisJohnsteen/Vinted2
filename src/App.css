@@ -72,3 +72,11 @@ header button {
   justify-content: space-between;
   flex-wrap: wrap;
 }
+
+/* Signup */
+
+.container-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
