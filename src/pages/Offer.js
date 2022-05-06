@@ -29,33 +29,6 @@ const Offer = () => {
     <div>En cours de chargement...</div>
   ) : (
     <>
-      <header>
-        <img
-          src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
-          alt=""
-        />
-        <div>
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" />
-        </div>
-        <nav>
-          <button className="header-button1">
-            <Link className="header-link1" to="/">
-              s'inscrire
-            </Link>
-          </button>
-          <button className="header-button1">
-            <Link className="header-link1" to="/">
-              se connecter
-            </Link>
-          </button>
-          <button className="header-button2">
-            <Link className="header-link3" to="/">
-              vends tes articles
-            </Link>
-          </button>
-        </nav>
-      </header>
       <main>
         <div>
           {data.product_pictures.map((picture, index) => {

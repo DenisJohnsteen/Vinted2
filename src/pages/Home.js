@@ -27,34 +27,6 @@ const Home = () => {
     <div>En cours de chargement...</div>
   ) : (
     <div className="container">
-      <header>
-        <img
-          src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
-          alt=""
-        />
-        <div>
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" />
-        </div>
-        <nav>
-          <button className="header-button1">
-            <Link className="header-link1" to="/signup">
-              s'inscrire
-            </Link>
-          </button>
-          <button className="header-button1">
-            <Link className="header-link1" to="/">
-              se connecter
-            </Link>
-          </button>
-          <button className="header-button2">
-            <Link className="header-link3" to="/">
-              vends tes articles
-            </Link>
-          </button>
-        </nav>
-      </header>
-
       <main>
         <section>
           <img
@@ -74,16 +46,10 @@ const Home = () => {
             return (
               <>
                 <div>
-                  <div key={index}>
-                    {offer.product_pictures.map((picture, num) => {
-                      return (
-                        <div key={num}>
-                          <Link to={`/offer/${id}`}>
-                            <img src={picture.secure_url} alt="" />
-                          </Link>
-                        </div>
-                      );
-                    })}
+                  <div>
+                    <Link to={`/offer/${id}`}>
+                      <img src={offer.product_image.secure_url} alt="" />
+                    </Link>
                   </div>
 
                   <div>
