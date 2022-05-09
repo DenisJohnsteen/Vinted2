@@ -16,7 +16,7 @@ const Offer = () => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        // console.log(response.data);
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -32,14 +32,7 @@ const Offer = () => {
     <>
       <div className="container-offer">
         <div className="column1">
-          {data.product_pictures.map((picture, index) => {
-            console.log(picture);
-            return (
-              <div>
-                <img src={picture.secure_url} alt="" />
-              </div>
-            );
-          })}
+          <img src={data.product_image.secure_url} alt="" />
         </div>
         <div className="column2">
           <p>{data.product_price}€</p>

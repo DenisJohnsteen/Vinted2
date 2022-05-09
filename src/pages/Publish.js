@@ -20,7 +20,7 @@ const Publish = () => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(Number);
-  const [change, setChange] = useState(false);
+  const [exchange, setExchange] = useState(false);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -151,7 +151,7 @@ const Publish = () => {
         <input
           type="checkbox"
           onClick={() => {
-            setChange(!change);
+            setExchange(!exchange);
           }}
         />
         <span>Je suis intéressé(e) par les échanges</span>
