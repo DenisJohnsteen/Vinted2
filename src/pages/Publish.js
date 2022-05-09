@@ -156,6 +156,11 @@ const Publish = () => {
         />
         <span>Je suis intéressé(e) par les échanges</span>
         <input type="submit" value="ajouter" />
+        {isPictureSending === true ? (
+          <div>Image en cours de téléchargement</div>
+        ) : (
+          data && <img src={data.secure_url} alt="" />
+        )}
       </form>
     </div>
   );
