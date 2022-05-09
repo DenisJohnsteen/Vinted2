@@ -35,7 +35,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route
+          path="/login/:id"
+          element={<Login handleToken={handleToken} />}
+        />
         <Route
           path="/publish"
           element={<Publish handleToken={handleToken} />}

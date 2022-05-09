@@ -1,9 +1,12 @@
 import "./publish.scss";
+import { useParams } from "react-router-dom";
 import { useState } from "react";
+import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Publish = ({ handleToken }) => {
+const Publish = () => {
+  // Import image //
   const [picture, setPicture] = useState(null);
   const [data, setData] = useState(null);
   const [isPictureSending, setIsPictureSending] = useState(false);
@@ -14,37 +17,46 @@ const Publish = ({ handleToken }) => {
   const [brand, setBrand] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [etat, setEtat] = useState("");
+  const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(Number);
   const [change, setChange] = useState(false);
+
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  const token = Cookies.get("userToken");
 
   const handleSendOffer = async (event) => {
     event.preventDefault();
     setIsPictureSending(true);
 
+    const formData = new FormData();
+    formData.append("picture", picture);
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("price", price);
+    formData.append("condition", condition);
+    formData.append("city", city);
+    formData.append("brand", brand);
+    formData.append("size", size);
+    formData.append("color", color);
+
     try {
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        formData,
         {
           headers: {
-            Authorization: `Bearer ${handleToken}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
-          title: title,
-          description: description,
-          price: price,
-          condition: etat,
-          city: city,
-          brand: brand,
-          size: size,
-          color: color,
-          picture: picture,
         }
       );
       console.log(response.data);
       setData(response.data);
-      // alert(JSON.stringify(response.data));
+
+      navigate("/offer/" + response.data._id);
     } catch (err) {
       if (err.response.status === 500) {
         console.error("An error occurred");
@@ -60,7 +72,6 @@ const Publish = ({ handleToken }) => {
       <form onSubmit={handleSendOffer}>
         <input
           type="file"
-          value={picture}
           onChange={(event) => {
             setPicture(event.target.files[0]);
           }}
@@ -113,10 +124,10 @@ const Publish = ({ handleToken }) => {
         <input
           type="text"
           placeholder="Neuf avec étiquette"
-          name="etat"
-          value={etat}
+          name="condition"
+          value={condition}
           onChange={(event) => {
-            setEtat(event.target.value);
+            setCondition(event.target.value);
           }}
         />
         <input
