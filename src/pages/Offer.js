@@ -1,3 +1,4 @@
+import "./offer.scss";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -29,8 +30,8 @@ const Offer = () => {
     <div>En cours de chargement...</div>
   ) : (
     <>
-      <main>
-        <div>
+      <div className="container-offer">
+        <div className="column1">
           {data.product_pictures.map((picture, index) => {
             console.log(picture);
             return (
@@ -40,20 +41,19 @@ const Offer = () => {
             );
           })}
         </div>
-        <div>
+        <div className="column2">
+          <p>{data.product_price}€</p>
           {data.product_details.map((infos, index) => {
-            console.log(infos);
+            // console.log(infos);
+            const keys = Object.keys(infos);
             return (
-              <div>
-                <p>MARQUE:{infos.MARQUE}</p>
-                <p>ÉTAT:{infos.ÉTAT}</p>
-                <p>COULEUR:{infos.COULEUR}</p>
-                <p>EMPLACEMENT:{infos.EMPLACEMENT}</p>
+              <div key={index}>
+                {keys[0]} : {infos[keys[0]]}
               </div>
             );
           })}
         </div>
-      </main>
+      </div>
     </>
   );
 };

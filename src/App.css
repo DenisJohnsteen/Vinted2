@@ -9,69 +9,9 @@
   border: 2px solid red;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid blue;
-}
-
-header input {
-  width: 592px;
-  height: 34px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background-color: rgb(235, 235, 235);
-}
-
-header button {
-  border: none;
-}
-
-.header-button1 {
-  border: 1px solid #48858b;
-  border-radius: 5px;
-}
-
-.header-button2 {
-  background-color: #48858b;
-  border-radius: 5px;
-}
-
-.header-link1,
-.header-link1,
-.header-link3 {
-  text-decoration: none;
-  color: #48858b;
-  font-size: 16px;
-}
-
-.header-link3 {
-  color: white;
-}
-
-.banner-img {
-  height: 450px;
-  width: 100%;
-  object-fit: cover;
-}
-
 /* .offers {
   display: flex;
 } */
-
-.offers img {
-  object-fit: cover;
-  height: 326px;
-  width: 192px;
-}
-
-.offers {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
 
 /* Signup */
 

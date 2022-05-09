@@ -1,3 +1,4 @@
+import "./header.scss";
 import {
   BrowserRouter as Router,
   Routes,
@@ -31,17 +32,29 @@ const Header = ({ token, handleToken }) => {
                 se connecter
               </Link>
             </button>
+            <button className="header-button2">
+              <Link className="header-link3" to="/publish">
+                vends tes articles
+              </Link>
+            </button>
           </div>
         ) : (
-          <button
-            className="header-button2"
-            onClick={() => {
-              handleToken(null);
-              navigate("/");
-            }}
-          >
-            deconnection
-          </button>
+          <>
+            <button className="header-button2">
+              <Link className="header-link3" to="/publish">
+                vends tes articles
+              </Link>
+            </button>
+            <button
+              className="header-button2"
+              onClick={() => {
+                handleToken(null);
+                navigate("/");
+              }}
+            >
+              deconnection
+            </button>
+          </>
         )}
       </nav>
     </header>

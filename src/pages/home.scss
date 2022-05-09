@@ -1,0 +1,26 @@
+.banner-img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+
+  // top: 0;
+  // bottom: 0;
+  // left: 0;
+  // right: 0;
+  // background-image: url(../assets/image/tear-d431548c90905ad757632e4c3075d9473e38c7c6642721efeae9413afb9387a2.svg);
+  // background-position: bottom -1px right -1px;
+  // background-repeat: no-repeat;
+  // background-size: contain;
+}
+
+.offers img {
+  object-fit: cover;
+  height: 326px;
+  width: 192px;
+}
+
+.offers {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
