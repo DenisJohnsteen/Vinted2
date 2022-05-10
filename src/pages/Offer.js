@@ -35,17 +35,23 @@ const Offer = () => {
           <img src={data.product_image.secure_url} alt="" />
         </div>
         <div className="column2">
-          <p>{data.product_price}€</p>
+          <p className="prix">{data.product_price} €</p>
           {data.product_details.map((infos, index) => {
             // console.log(infos);
             const keys = Object.keys(infos);
             return (
-              <div key={index}>
-                {keys[0]} : {infos[keys[0]]}
-              </div>
+              <>
+                <div className="bote">
+                  <p className="para" key={index}>
+                    <span className="gauche">{keys[0]} </span>
+                    <span className="droite">{infos[keys[0]]}</span>
+                  </p>
+                </div>
+              </>
             );
           })}
-          <button>
+          <hr />
+          <button className="buttonpayment">
             <Link
               to="/payment"
               state={{

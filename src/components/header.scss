@@ -4,6 +4,7 @@ header {
   align-items: center;
   // border: 1px solid blue;
   width: 1140px;
+
   margin: 0 auto;
 }
 
@@ -23,11 +24,14 @@ header button {
 .header-button1 {
   border: 1px solid #48858b;
   border-radius: 5px;
+  margin-right: 20px;
+  margin-left: 0px;
 }
 
 .header-button2 {
   background-color: #48858b;
   border-radius: 5px;
+  margin-left: 30px;
 }
 
 .header-link1,
@@ -40,4 +44,11 @@ header button {
 
 .header-link3 {
   color: white;
+}
+
+.searchbox {
+  padding: 0px 10px 0px 10px;
+  background-color: #ebebeb;
+  border-radius: 5px;
+  margin-right: 20px;
 }
