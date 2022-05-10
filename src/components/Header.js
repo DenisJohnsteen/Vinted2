@@ -11,10 +11,12 @@ const Header = ({ token, handleToken }) => {
   const navigate = useNavigate();
   return (
     <header>
-      <img
-        src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
-        alt=""
-      />
+      <Link to="/">
+        <img
+          src="https://www.vinted.fr/assets/web-logo/default/logo.svg"
+          alt=""
+        />
+      </Link>
       <div>
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" />

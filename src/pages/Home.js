@@ -27,7 +27,7 @@ const Home = () => {
   return isLoading === true ? (
     <div>En cours de chargement...</div>
   ) : (
-    <div className="container">
+    <>
       <main>
         <section>
           <img
@@ -36,39 +36,40 @@ const Home = () => {
             alt=""
           />
         </section>
+        <div className="container">
+          <h1>Articles Populaire</h1>
 
-        <h1>Articles Populaire</h1>
-
-        <section className="offers">
-          {data.offers.map((offer, index) => {
-            // console.log(offer.product_pictures);
-            const id = offer._id;
-            // console.log(id);
-            return (
-              <>
-                <div>
+          <section className="offers">
+            {data.offers.map((offer, index) => {
+              // console.log(offer.product_pictures);
+              const id = offer._id;
+              // console.log(id);
+              return (
+                <>
                   <div>
-                    <Link to={`/offer/${id}`}>
-                      <img src={offer.product_image.secure_url} alt="" />
-                    </Link>
-                  </div>
+                    <div>
+                      <Link to={`/offer/${id}`}>
+                        <img src={offer.product_image.secure_url} alt="" />
+                      </Link>
+                    </div>
 
-                  <div>
-                    <p>{offer.product_price}€</p>
-                  </div>
+                    <div>
+                      <p>{offer.product_price}€</p>
+                    </div>
 
-                  <div>
-                    {offer.product_details.map((brand) => {
-                      return <p>{brand.MARQUE}</p>;
-                    })}
+                    <div>
+                      {offer.product_details.map((brand) => {
+                        return <p>{brand.MARQUE}</p>;
+                      })}
+                    </div>
                   </div>
-                </div>
-              </>
-            );
-          })}
-        </section>
+                </>
+              );
+            })}
+          </section>
+        </div>
       </main>
-    </div>
+    </>
   );
 };
 

@@ -2,6 +2,11 @@ import "./App.css";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
+// import de stripe
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 // import des components
 import Header from "./components/Header";
@@ -12,8 +17,7 @@ import Offer from "./pages/Offer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
-
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Payment from "./pages/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -28,6 +32,7 @@ function App() {
     }
     setToken(token);
   };
+
   return (
     <Router>
       <Header token={token} handleToken={handleToken} />
@@ -35,15 +40,13 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup handleToken={handleToken} />} />
-        <Route
-          path="/login/:id"
-          element={<Login handleToken={handleToken} />}
-        />
-        <Route
-          path="/publish"
-          element={<Publish handleToken={handleToken} />}
-        />
+        <Route path="/login" element={<Login handleToken={handleToken} />} />
+        <Route path="/publish" element={<Publish token={token} />} />
+        <Route path="/payment" element={<Payment token={token} />}></Route>
       </Routes>
+      {/* <Elements stripe={stripePromise}>
+        <CheckoutForm />
+      </Elements> */}
     </Router>
   );
 }

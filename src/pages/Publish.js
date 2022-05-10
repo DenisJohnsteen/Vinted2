@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Publish = () => {
+const Publish = ({ token }) => {
   // Import image //
   const [picture, setPicture] = useState(null);
   const [data, setData] = useState(null);
@@ -23,7 +23,7 @@ const Publish = () => {
 
   const navigate = useNavigate();
 
-  const token = Cookies.get("userToken");
+  const userToken = Cookies.get("userToken");
 
   const handleSendOffer = async (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ const Publish = () => {
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${userToken}`,
             "Content-Type": "multipart/form-data",
           },
         }
@@ -65,7 +65,7 @@ const Publish = () => {
 
     setIsPictureSending(false);
   };
-  return (
+  return token ? (
     <div className="container">
       <form onSubmit={handleSendOffer}>
         <input
@@ -161,6 +161,8 @@ const Publish = () => {
         )}
       </form>
     </div>
+  ) : (
+    <Navigate to="/login" />
   );
 };
 

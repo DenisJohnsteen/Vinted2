@@ -45,6 +45,18 @@ const Offer = () => {
               </div>
             );
           })}
+          <button>
+            <Link
+              to="/payment"
+              state={{
+                title: data.product_name,
+                price: data.product_price,
+                id,
+              }}
+            >
+              Acheter
+            </Link>
+          </button>
         </div>
       </div>
     </>
