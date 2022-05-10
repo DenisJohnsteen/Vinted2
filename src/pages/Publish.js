@@ -1,8 +1,7 @@
 import "./publish.scss";
-import { useParams } from "react-router-dom";
 import { useState } from "react";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Publish = () => {
@@ -22,7 +21,6 @@ const Publish = () => {
   const [price, setPrice] = useState(Number);
   const [exchange, setExchange] = useState(false);
 
-  const { id } = useParams();
   const navigate = useNavigate();
 
   const token = Cookies.get("userToken");
